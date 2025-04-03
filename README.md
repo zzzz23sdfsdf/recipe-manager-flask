@@ -1,4 +1,4 @@
-# recipe-manager-flask
+# Healthy Recipe Finder-flask
 
 A Flask-based web application for managing and discovering recipes with a clean, intuitive user interface.
 ![image](https://github.com/user-attachments/assets/b36d1bd5-bf13-4548-8b47-6d6f509522bc)
