@@ -20,59 +20,57 @@ Clean UI: Modern interface with intuitive navigation
 
 ## Project Structure
 recipe-manager/
-├── server.py              # Main Flask application
-├── static/                # Static files
-│   ├── recipes.json       # Recipe data storage
-│   ├── script.js          # Frontend JavaScript
-│   └── style.css          # CSS styling
-└── templates/             # HTML templates
-    ├── add_recipe.html    # Add new recipe form
-    ├── base.html          # Base template layout
-    ├── edit_recipe.html   # Edit recipe form
-    ├── index.html         # Homepage
-    ├── search_results.html# Search results page
-    └── view.html          # Recipe details view
-    
-Installation & Setup
 
-Clone the repository:
-Copygit clone https://github.com/yourusername/recipe-manager.git
-cd recipe-manager
+server.py - Main Flask application
+static/ - Static files directory
 
-Create and activate a virtual environment (optional but recommended):
-Copypython -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+recipes.json - Recipe data storage
+script.js - Frontend JavaScript
+style.css - CSS styling
 
-Install dependencies:
+
+templates/ - HTML templates directory
+
+add_recipe.html - Add new recipe form
+base.html - Base template layout
+edit_recipe.html - Edit recipe form
+index.html - Homepage
+search_results.html - Search results page
+view.html - Recipe details view
+
+## Installation & Setup
+
+
+## Install dependencies:
 Copypip install -r requirements.txt
 
-Run the application:
+## Run the application:
 Copypython server.py
 
-Open your browser and navigate to:
+## Open your browser and navigate to:
 Copyhttp://localhost:5000
 
 
-Usage
-Adding a Recipe
+## Usage
+# Adding a Recipe
 
 Click the "Add Recipe" button on the homepage
 Fill in the recipe details including title, ingredients, instructions, and category
 Click "Save" to add the recipe to your collection
 
-Searching for Recipes
+# Searching for Recipes
 
 Enter a search term in the search bar
 Results will display recipes matching the name, ingredients, or category
 
-Editing a Recipe
+# Editing a Recipe
 
 Navigate to the recipe you want to edit
 Click the "Edit" button
 Modify the recipe details
 Click "Save" to update the recipe
 
-Deployment
+## Deployment
 This application can be deployed on various platforms:
 Render
 
