@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <!-- Purpose and Audience Section -->
+    <header class="main-header text-center p-4 mb-5">
+        <h1 class="display-4 fw-bold">Healthy Recipe Finder</h1>
+        <p class="lead fs-4">Discover nutritious, easy-to-make meals for your healthy lifestyle</p>
+        
+        <p class="mt-4">Whether you're looking for quick breakfasts, nutrient-rich lunches, or balanced dinners, we've got you covered with recipes that are both delicious and good for you!</p>
+    </header>
+
+    <!-- Popular Recipes Section -->
+    <section class="popular-recipes mt-5">
+        <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+                <h2 class="fw-bold">Popular Recipes</h2>
+                <p class="text-muted">Try these community favorites to get started</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <a href="{{ url_for('search', query='') }}" class="btn btn-primary">Browse All Recipes</a>
+            </div>
+        </div>
+
+        <!-- Recipe Cards - Bootstrap Grid -->
+        <div class="row g-4" id="popular-recipes">
+            {% for recipe in recipes %}
+            <div class="col-md-4">
+                <div class="card recipe-card h-100 shadow-sm">
+                    <!-- Clickable Image -->
+                    <a href="{{ url_for('view_recipe', id=recipe['id']) }}" class="recipe-image-link">
+                        <div class="card-img-container">
+                            <img src="{{ recipe.image_url }}" class="card-img-top"
+                                 alt="Photo of {{ recipe.title }}"
+                                 onerror="this.src='https://via.placeholder.com/300x200.png?text=No+Image+Available';">
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title h5">{{ recipe.title }}</h3>
+                        <p class="card-text">{{ recipe.summary }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">{{ recipe.prep_time }} minutes</small>
+                            <span class="badge bg-light text-dark">{{ recipe.servings }} servings</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-top-0">
+                        <a href="{{ url_for('view_recipe', id=recipe['id']) }}" class="btn btn-outline-primary w-100">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    
+
+    
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (!document.querySelector('#popular-recipes .card')) {
+            loadPopularRecipes();
+        }
+    });
+</script>
+{% endblock %}

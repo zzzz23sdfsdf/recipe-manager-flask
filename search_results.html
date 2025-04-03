@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            {% if search_type == 'prep_time' %}
+                <h1>Recipes with <span class="highlight">{{ query }} minutes</span> prep time</h1>
+            {% elif search_type == 'servings' %}
+                <h1>Recipes with <span class="highlight">{{ query }} servings</span></h1>
+            {% elif search_type == 'ingredient' %}
+                <h1>Recipes with "<span class="highlight">{{ query }}</span>" as an ingredient</h1>
+            {% else %}
+                <h1>Search Results for "<span class="highlight search-query">{{ query }}</span>"</h1>
+            {% endif %}
+            <p class="lead"><strong>{{ count }} result{% if count != 1 %}s{% endif %} found</strong></p>
+        </div>
+    </div>
+
+    {% if count == 0 %}
+    <div class="alert alert-warning">
+        <h4 class="alert-heading">No matches found</h4>
+        <p>Try different keywords or check the spelling.</p>
+        <hr>
+        <p class="mb-0"><a href="{{ url_for('home') }}" class="alert-link">Return to the home page</a></p>
+    </div>
+    {% endif %}
+
+    {% if results %}
+    <div class="row">
+        <div class="col-12">
+            <div class="list-group">
+                {% for recipe in results %}
+                <a href="{{ url_for('view_recipe', id=recipe['id']) }}" class="list-group-item list-group-item-action p-3 mb-2 shadow-sm">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center mb-2 mb-md-0">
+                            <img src="{{ recipe.image_url }}" class="img-fluid rounded search-result-img" 
+                                 alt="{{ recipe.title }}"
+                                 onerror="this.src='https://via.placeholder.com/150x150.png?text=No+Image';"
+                                 style="max-width: 100px; max-height: 100px; object-fit: cover;">
+                        </div>
+                        
+                        <div class="col-md-10">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-1 recipe-title">{{ recipe["title"] }}</h4>
+                                <small class="text-muted prep-time"><strong>Prep Time:</strong> 
+                                    {% if " minutes" in recipe["prep_time"]|string %}
+                                        {{ recipe["prep_time"] }}
+                                    {% else %}
+                                        {{ recipe["prep_time"] }} minutes
+                                    {% endif %}
+                                </small>
+                            </div>
+                            
+                            <p class="mb-1 recipe-summary">{{ recipe["summary"] }}</p>
+                            
+                            <div class="d-flex flex-wrap gap-1 mt-2">
+                                <small class="text-muted me-3 servings"><strong>Servings:</strong> 
+                                    {% if " people" in recipe["servings"]|string %}
+                                        {{ recipe["servings"] }}
+                                    {% else %}
+                                        {{ recipe["servings"] }} people
+                                    {% endif %}
+                                </small>
+                                <small class="text-muted me-3"><strong>Calories:</strong> {{ recipe["nutrition"]["Calories"] }}</small>
+                                <small class="text-muted"><strong>Allergy:</strong> {{ recipe["allergy_info"] }}</small>
+                            </div>
+
+                            <!-- NEW: Display matching ingredients -->
+                            {% if search_type == "ingredient" %}
+                                <p class="mt-2"><strong>Matching Ingredients:</strong> 
+                                {% for name, amount in recipe["ingredients"].items() %}
+                                    {% if query.lower() in name.lower() %}
+                                        <span class="highlight ingredient-name">{{ name }}</span> ({{ amount }}),
+                                    {% endif %}
+                                {% endfor %}
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+    </div>
+</div>
+
+<style>
+    .highlight {
+        background-color: #ffcc00; /* Improved yellow highlight */
+        color: black;
+        font-weight: bold;
+        padding: 3px 5px;
+        border-radius: 4px;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchQuery = new URLSearchParams(window.location.search).get("query");
+    const searchType = new URLSearchParams(window.location.search).get("type");
+
+    function highlightMatchingText(selector, query, fullMatch = false) {
+        document.querySelectorAll(selector).forEach(el => {
+            // Avoid highlighting in the footer
+            if (el.closest('footer')) return;
+            
+            let content = el.innerHTML;
+            
+            // Precise prep time highlighting
+            if (searchType === "prep_time") {
+                el.innerHTML = content.replace(
+                    new RegExp(`\\b${query}\\s*minutes\\b`, "gi"), 
+                    '<span class="highlight">$&</span>'
+                );
+            }
+        });
+    }
+
+    if (searchQuery) {
+        if (searchType === "prep_time") {
+            highlightMatchingText(".prep-time", searchQuery, true);
+            highlightMatchingText("h1", searchQuery, true);
+        }
+    }
+});
+</script>
+
+{% endblock %}

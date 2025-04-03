@@ -1,0 +1,342 @@
+{
+    "1": {
+        "id": "1",
+        "title": "Chicken Stir-Fry",
+        "summary": "A quick and healthy chicken stir-fry with fresh vegetables and a savory sauce.",
+        "prep_time": 15,
+        "servings": 2,
+        "ingredients": {
+            "Chicken Breast": "200g",
+            "Broccoli": "100g",
+            "Carrots": "80g",
+            "Soy Sauce": "30ml"
+        },
+        "allergy_info": "Contains soy.",
+        "nutrition": {
+            "Calories": 350,
+            "Protein": 30
+        },
+        "Cooking Tips": "Serve with steamed rice.",
+        "Steps": [
+            "Slice the chicken breast into thin strips and chop the broccoli and carrots into bite-sized pieces.",
+            "Heat a pan with sesame oil, then add the chicken, cooking until golden brown.",
+            "Toss in garlic, ginger, and vegetables, stirring continuously.",
+            "Pour in soy sauce and let everything cook for a few minutes until the vegetables are tender but crisp.",
+            "Garnish with green onions and sesame seeds, and serve hot with steamed rice."
+        ],
+        "image_url": "https://i.postimg.cc/52hDvnqv/chicken-stir-fry-1.jpg"
+    },
+    "2": {
+        "id": "2",
+        "title": "Overnight Oats",
+        "summary": "A nutritious breakfast that is easy to prepare the night before.",
+        "prep_time": 5,
+        "servings": 1,
+        "ingredients": {
+            "Oats": "50g",
+            "Milk": "200ml",
+            "Honey": "1 tbsp"
+        },
+        "allergy_info": "Contains dairy.",
+        "nutrition": {
+            "Calories": 280,
+            "Protein": 10
+        },
+        "Cooking Tips": "Let the oats soak overnight for a creamier texture.",
+        "Steps": [
+            "In a jar or bowl, combine oats, milk, and honey.",
+            "Stir well, ensuring all oats are soaked.",
+            "Cover and refrigerate overnight or for at least 6 hours.",
+            "In the morning, give it a good stir and top with fresh fruit or nuts if desired.",
+            "Enjoy chilled or warm it up before serving."
+        ],
+        "image_url": "https://i.postimg.cc/2yt0YS0v/Overnight-oats-recipe.jpg"
+    },
+    "3": {
+        "id": "3",
+        "title": "Avocado Toast",
+        "summary": "A simple yet delicious avocado toast with eggs and seasoning.",
+        "prep_time": 10,
+        "servings": 1,
+        "ingredients": {
+            "Avocado": "1/2 medium",
+            "Whole Wheat Bread": "1 slice",
+            "Egg": "1 large"
+        },
+        "allergy_info": "Contains eggs.",
+        "nutrition": {
+            "Calories": 280,
+            "Protein": 10
+        },
+        "Cooking Tips": "Use a ripe avocado for better taste.",
+        "Steps": [
+            "Toast the slice of whole wheat bread until golden brown.",
+            "Mash the avocado in a bowl and spread it evenly over the toast.",
+            "Cook the egg to your desired style (fried, scrambled, or poached).",
+            "Place the egg on top of the avocado toast.",
+            "Season with salt, pepper, and optional chili flakes before serving."
+        ],
+        "image_url": "https://i.postimg.cc/PqnFNNTQ/avocado-toast.jpg"
+    },
+    "4": {
+        "id": "4",
+        "title": "Kale & Quinoa Salad",
+        "summary": "A superfood salad loaded with kale, quinoa, and a light lemon dressing.",
+        "prep_time": 15,
+        "servings": 2,
+        "ingredients": {
+            "Kale": "100g",
+            "Quinoa": "1/2 cup(cooked)",
+            "Almonds": "20g",
+            "Cranberries": "30g",
+            "Lemon Juice": "2 tbsp",
+            "Olive Oil": "1 tbsp"
+        },
+        "allergy_info": "Contains nuts.",
+        "nutrition": {
+            "Calories": 320,
+            "Protein": 12
+        },
+        "Cooking Tips": "Massage kale with lemon juice for a softer texture.",
+        "Steps": [
+            "Cook quinoa according to package instructions and let it cool.",
+            "Wash and chop the kale, then massage it with lemon juice to soften.",
+            "Toast the almonds in a dry pan until golden brown.",
+            "In a large bowl, combine the quinoa, kale, cranberries, and almonds.",
+            "Drizzle with olive oil and toss well before serving."
+        ],
+        "image_url": "https://i.postimg.cc/Qx1CmRQd/kale-quinoa-salad-recipe-11.jpg"
+    },
+    "5": {
+        "id": "5",
+        "title": "Grilled Salmon & Asparagus",
+        "summary": "Omega-3 rich grilled salmon with roasted asparagus for a heart-healthy meal.",
+        "prep_time": 25,
+        "servings": 2,
+        "ingredients": {
+            "Salmon Fillet": "200g",
+            "Asparagus": "100g",
+            "Olive Oil": "1 tbsp",
+            "Garlic": "1 clove",
+            "Lemon Slices": "2"
+        },
+        "allergy_info": "Contains fish.",
+        "nutrition": {
+            "Calories": 350,
+            "Protein": 38
+        },
+        "Cooking Tips": "Roast asparagus at 400\u00b0F (200\u00b0C) for best flavor.",
+        "Steps": [
+            "Preheat the oven to 400\u00b0F (200\u00b0C).",
+            "Season the salmon fillet with salt, pepper, and minced garlic.",
+            "Place the asparagus on a baking tray, drizzle with olive oil, and season with salt.",
+            "Place lemon slices over the salmon and roast everything for 15\u201320 minutes.",
+            "Serve hot with an extra squeeze of fresh lemon juice."
+        ],
+        "image_url": "https://i.postimg.cc/d3KPVSL5/grilled-salmon-asparagus-1.jpg"
+    },
+    "6": {
+        "id": "6",
+        "title": "Greek Yogurt Parfait",
+        "summary": "A protein-packed breakfast with Greek yogurt, fresh fruit, and granola.",
+        "prep_time": 5,
+        "servings": 1,
+        "ingredients": {
+            "Greek Yogurt": "150g",
+            "Honey": "1 tsp",
+            "Mixed Berries": "50g",
+            "Granola": "20g"
+        },
+        "allergy_info": "Contains dairy and nuts.",
+        "nutrition": {
+            "Calories": 200,
+            "Protein": 15
+        },
+        "Cooking Tips": "Use plain yogurt to reduce added sugar.",
+        "Steps": [
+            "Spoon half of the Greek yogurt into a serving glass or bowl.",
+            "Drizzle with honey and layer with mixed berries.",
+            "Add the remaining yogurt on top.",
+            "Sprinkle granola over the parfait for a crunchy finish.",
+            "Serve immediately or refrigerate for later."
+        ],
+        "image_url": "https://i.postimg.cc/5NQb1GnW/Greek-Yogurt-Parfait-Recipe.jpg"
+    },
+    "7": {
+        "id": "7",
+        "title": "Lentil Soup",
+        "summary": "A hearty and fiber-rich lentil soup packed with plant-based protein.",
+        "prep_time": 40,
+        "servings": 3,
+        "ingredients": {
+            "Lentils": "1 cup",
+            "Carrots": "1 medium(diced)",
+            "Onion": "1 small(chopped)",
+            "Tomatoes": "200g(diced)",
+            "Vegetable Broth": "500ml"
+        },
+        "allergy_info": "Vegan and gluten-free.",
+        "nutrition": {
+            "Calories": 250,
+            "Protein": 18
+        },
+        "Cooking Tips": "Simmer longer for a richer taste.",
+        "Steps": [
+            "Heat a pot over medium heat and saut\u00e9 onions, carrots, and garlic until soft.",
+            "Add lentils, diced tomatoes, and vegetable broth to the pot.",
+            "Bring to a boil, then reduce heat and let it simmer for 30 minutes.",
+            "Season with salt, pepper, and herbs of choice.",
+            "Blend partially for a thicker consistency or serve as is."
+        ],
+        "image_url": "https://i.postimg.cc/D0FvMzdf/13978-lentil-soup-DDMFS-4x3-edfa47fc6b234e6b8add24d44c036d43.jpg"
+    },
+    "8": {
+        "id": "8",
+        "title": "Stuffed Bell Peppers",
+        "summary": "Bell peppers stuffed with lean turkey, quinoa, and vegetables for a nutritious meal.",
+        "prep_time": 30,
+        "servings": 2,
+        "ingredients": {
+            "Bell Peppers": "2 large",
+            "Ground Turkey": "150g",
+            "Quinoa": "1/2 cup(cooked)",
+            "Tomato Sauce": "100g"
+        },
+        "allergy_info": "Gluten-free.",
+        "nutrition": {
+            "Calories": 320,
+            "Protein": 35
+        },
+        "Cooking Tips": "Bake at 375\u00b0F (190\u00b0C) for 20 minutes.",
+        "Steps": [
+            "Preheat the oven to 375\u00b0F (190\u00b0C).",
+            "Cut the tops off the bell peppers and remove the seeds.",
+            "In a pan, cook the ground turkey until browned.",
+            "Mix in cooked quinoa and tomato sauce, then stuff the mixture into the peppers.",
+            "Bake for 20 minutes and serve warm."
+        ],
+        "image_url": "https://i.postimg.cc/k5XhfPbr/Stuffed-Peppers-NCBA-Beef-Aug-202431717.jpg"
+    },
+    "9": {
+        "id": "9",
+        "title": "Banana Oatmeal Pancakes",
+        "summary": "Fluffy pancakes made with bananas and oats, naturally sweetened.",
+        "prep_time": 15,
+        "servings": 2,
+        "ingredients": {
+            "Banana": "1 medium",
+            "Oats": "1/2 cup",
+            "Egg": "1 large",
+            "Cinnamon": "1/2 tsp"
+        },
+        "allergy_info": "Contains eggs.",
+        "nutrition": {
+            "Calories": 260,
+            "Protein": 12
+        },
+        "Cooking Tips": "Blend oats for a smoother batter.",
+        "Steps": [
+            "Blend oats until they form a fine flour-like texture.",
+            "Mash the banana in a bowl and mix it with the eggs, oats, and cinnamon.",
+            "Heat a non-stick pan over medium heat and lightly grease it.",
+            "Pour small amounts of batter into the pan and cook until bubbles form.",
+            "Flip the pancakes and cook for another minute before serving."
+        ],
+        "image_url": "https://i.postimg.cc/vBmFg6zV/Banana-Oatmeal-Blender-Pancakes-4-e1561651840217.jpg"
+    },
+    "10": {
+        "id": "10",
+        "title": "Berry Smoothie",
+        "summary": "A refreshing mixed berry smoothie packed with antioxidants.",
+        "prep_time": 5,
+        "servings": 1,
+        "ingredients": {
+            "Mixed Berries": "150g",
+            "Banana": "1",
+            "Yogurt": "100g",
+            "Honey": "1 tbsp",
+            "Milk": "200ml"
+        },
+        "allergy_info": "Contains dairy.",
+        "nutrition": {
+            "Calories": 220,
+            "Protein": 8
+        },
+        "Cooking Tips": "Use frozen berries for a thicker smoothie.",
+        "Steps": [
+            "Add mixed berries, banana, yogurt, honey, and milk into a blender.",
+            "Blend on high speed until smooth and creamy.",
+            "Taste and adjust sweetness if needed by adding more honey.",
+            "Pour into a glass and serve immediately.",
+            "For a thicker smoothie, use frozen berries."
+        ],
+        "image_url": "https://i.postimg.cc/Nj0zxwX3/Triple-Berry-Smoothie-square-featured.jpg"
+    },
+    "11": {
+        "id": "11",
+        "title": "Honey Garlic Shrimp",
+        "summary": "A quick and flavorful shrimp dish coated in a sweet and savory honey garlic sauce. Perfect for a fast and delicious meal.",
+        "prep_time": "15",
+        "servings": 1,
+        "ingredients": {
+            "Shrimp": "200g",
+            "Honey": "2 tbsp",
+            "Garlic": "3 cloves",
+            "Soy Sauce": "2 tbsp",
+            "Olive Oil": "1 tbsp",
+            "Lemon Juice": "1 tbsp",
+            "Red Pepper Flakes": "1/2 tsp"
+        },
+        "allergy_info": "Contains shellfish and soy.",
+        "nutrition": {
+            "Calories": 320,
+            "Protein": 35
+        },
+        "Cooking Tips": "Use fresh garlic for the best flavor.\r\nIf you want a thicker sauce, mix 1 tsp of cornstarch with 2 tbsp of water and add to the pan.",
+        "Steps": [
+            "1. In a small bowl, whisk together honey, soy sauce, minced garlic, lemon juice, and red pepper flakes.",
+            "2. Heat olive oil in a pan over medium heat.",
+            "3. Add shrimp and cook for 2 minutes on one side, then flip.",
+            "4. Pour the honey garlic sauce over the shrimp and cook for another 2-3 minutes until shrimp are opaque and coated in the sauce.",
+            "5. Remove from heat and serve over rice or with steamed vegetables."
+        ],
+        "image_url": "https://i.postimg.cc/NMxvttFY/image.png"
+    },
+    "12": {
+        "id": "12",
+        "title": "Mediterranean Quinoa Salad",
+        "summary": "A vibrant and refreshing Mediterranean quinoa salad packed with fresh vegetables, protein-rich quinoa, and a zesty lemon dressing.",
+        "prep_time": "15 minutes",
+        "servings": "4 people",
+        "ingredients": {
+            "Quinoa": "1 cup",
+            "Cherry tomatoes": "1 cup halved",
+            "Cucumber": "1 cup diced",
+            "Red bell pepper": "1 chopped",
+            "Red onion": "1/4 cup finely chopped",
+            "Kalamata olives": "1/4 cup sliced",
+            "Feta cheese": "1/2 cup crumbled",
+            "Fresh parsley": "1/4 cup chopped",
+            "Olive oil": "2 tbsp",
+            "Lemon juice": "2 tbsp",
+            "Garlic": "1 clove minced",
+            "Salt": "1/2 tsp",
+            "Black pepper": "1/2 tsp"
+        },
+        "allergy_info": "Contains dairy (feta cheese).",
+        "nutrition": {
+            "Calories": 220,
+            "Protein": 7
+        },
+        "Cooking Tips": "For a vegan version, replace feta cheese with a dairy-free alternative or omit it.\r\nLet the salad sit in the fridge for at least 30 minutes before serving to allow the flavors to meld.\r\nServe with grilled chicken or shrimp for added protein.",
+        "Steps": [
+            "Rinse the quinoa under cold water and cook according to package instructions.",
+            "In a large bowl, combine the cooked quinoa, cherry tomatoes, cucumber, red bell pepper, red onion, and kalamata olives.",
+            "In a small bowl, whisk together the olive oil, lemon juice, minced garlic, salt, and black pepper.",
+            "Pour the dressing over the salad and toss well to combine.",
+            "Top with crumbled feta cheese and chopped fresh parsley.",
+            "Serve immediately or refrigerate for at least 30 minutes for enhanced flavors."
+        ],
+        "image_url": "https://i.postimg.cc/kXSGr69d/image.png"
+    }
+}

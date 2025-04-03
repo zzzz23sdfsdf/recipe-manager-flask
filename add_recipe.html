@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="text-center">Add a New Recipe</h1>
+            <p class="lead text-center">Share your favorite healthy recipes with our community.</p>
+        </div>
+    </div>
+
+    <div id="success-alert" class="alert alert-success text-center mb-4" style="display: none;">
+        <h4>New Recipe Successfully Created!</h4>
+        <div class="mt-3">
+            <a href="#" id="view-recipe-link" class="btn btn-primary mr-2">See Recipe</a>
+            <button id="add-another-btn" class="btn btn-secondary">Add Another Recipe</button>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <form id="add-recipe-form" class="bg-white p-4 rounded shadow">
+                
+                <!-- Recipe Details -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h3 class="mb-0">Recipe Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="title" class="form-label">Title:</label>
+                            <input type="text" id="title" class="form-control">
+                            <span id="title-warning" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="image_url" class="form-label">Image URL:</label>
+                            <input type="text" id="image_url" class="form-control">
+                            <span id="image_url-warning" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="summary" class="form-label">Summary:</label>
+                            <textarea id="summary" class="form-control" rows="3"></textarea>
+                            <span id="summary-warning" class="text-danger"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="prep_time" class="form-label">Preparation Time (minutes):</label>
+                                <input type="text" id="prep_time" class="form-control">
+                                <span id="prep_time-warning" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="servings" class="form-label">Servings:</label>
+                                <input type="text" id="servings" class="form-control">
+                                <span id="servings-warning" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ingredients & Nutrition -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h3 class="mb-0">Ingredients & Nutrition</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="ingredients" class="form-label">Ingredients (name: amount, separated by commas):</label>
+                            <textarea id="ingredients" class="form-control" rows="4"></textarea>
+                            <span id="ingredients-warning" class="text-danger"></span>
+                            <small class="form-text text-muted">Example: Flour: 2 cups, Sugar: 1/2 cup, Eggs: 2</small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="allergy_info" class="form-label">Allergy Info:</label>
+                            <input type="text" id="allergy_info" class="form-control">
+                            <span id="allergy_info-warning" class="text-danger"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="calories" class="form-label">Calories (kcal):</label>
+                                <input type="text" id="calories" class="form-control">
+                                <span id="calories-warning" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="protein" class="form-label">Protein (g):</label>
+                                <input type="text" id="protein" class="form-control">
+                                <span id="protein-warning" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preparation Instructions -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h3 class="mb-0">Preparation Instructions</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="steps" class="form-label">Steps (Each step on a new line):</label>
+                            <textarea id="steps" class="form-control" rows="5"></textarea>
+                            <span id="steps-warning" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="tips" class="form-label">Cooking Tips:</label>
+                            <textarea id="tips" class="form-control" rows="2"></textarea>
+                            <span id="tips-warning" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Add Recipe</button>
+                    <button type="button" onclick="resetForm()" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('add-recipe-form');
+    const successAlert = document.getElementById('success-alert');
+    const viewRecipeLink = document.getElementById('view-recipe-link');
+    const addAnotherBtn = document.getElementById('add-another-btn');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Clear previous warnings
+        document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+        document.querySelectorAll('.form-control').forEach(el => el.classList.remove('is-invalid'));
+
+        // Validate form
+        if (!validateForm()) return;
+
+        // Prepare data for submission
+        const formData = {
+            title: document.getElementById('title').value.trim(),
+            summary: document.getElementById('summary').value.trim(),
+            prep_time: document.getElementById('prep_time').value.trim(),
+            servings: document.getElementById('servings').value.trim(),
+            ingredients: document.getElementById('ingredients').value.trim(),
+            image_url: document.getElementById('image_url').value.trim(),
+            allergy_info: document.getElementById('allergy_info').value.trim(),
+            calories: document.getElementById('calories').value.trim(),
+            protein: document.getElementById('protein').value.trim(),
+            steps: document.getElementById('steps').value.trim(),
+            tips: document.getElementById('tips').value.trim()
+        };
+
+        // Send AJAX request
+        fetch('/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Show success alert
+                successAlert.style.display = 'block';
+                
+                // Set view recipe link
+                viewRecipeLink.href = `/view/${data.id}`;
+
+                // Optionally scroll to top to show success message
+                window.scrollTo(0, 0);
+            } else {
+                // Handle specific field errors
+                if (data.field) {
+                    const warningEl = document.getElementById(`${data.field}-warning`);
+                    const inputEl = document.getElementById(data.field);
+                    
+                    if (warningEl && inputEl) {
+                        warningEl.textContent = data.error;
+                        inputEl.classList.add('is-invalid');
+                        inputEl.focus();
+                    }
+                }
+                
+                // General error handling
+                alert(data.error || 'An error occurred while adding the recipe');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An unexpected error occurred');
+        });
+    });
+
+    // Add another recipe button
+    addAnotherBtn.addEventListener('click', function() {
+        successAlert.style.display = 'none';
+        resetForm();
+        document.getElementById('title').focus();
+    });
+
+    function validateForm() {
+        let isValid = true;
+        let firstInvalidField = null; // Store the first invalid field
+    
+        document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+        document.querySelectorAll('.form-control').forEach(el => el.classList.remove('is-invalid'));
+    
+        const fields = [
+            { id: 'title', message: 'Title is required' },
+            { id: 'image_url', message: 'Image URL is required' },
+            { id: 'summary', message: 'Summary is required' },
+            { id: 'steps', message: 'Steps are required' },
+            { id: 'allergy_info', message: 'Allergy Info is required' },
+            { id: 'tips', message: 'Cooking Tips are required' }
+        ];
+    
+        const numericFields = [
+            { id: 'prep_time', message: 'Preparation time must be a non-negative number', min: 1 },
+            { id: 'servings', message: 'Servings must be a non-negative number', min: 1 },
+            { id: 'calories', message: 'Calories must be a non-negative number', min: 0 },
+            { id: 'protein', message: 'Protein must be a non-negative number', min: 0 }
+        ];
+    
+        // Validate text fields
+        fields.forEach(field => {
+            let input = document.getElementById(field.id);
+            let warning = document.getElementById(`${field.id}-warning`);
+            if (!input.value.trim()) {
+                warning.textContent = field.message;
+                input.classList.add('is-invalid');
+                if (!firstInvalidField) firstInvalidField = input;
+                isValid = false;
+            }
+        });
+    
+        // Validate numeric fields
+        numericFields.forEach(field => {
+            let input = document.getElementById(field.id);
+            let warning = document.getElementById(`${field.id}-warning`);
+            let value = input.value.trim();
+    
+            if (!value) {
+                warning.textContent = field.message;
+                input.classList.add('is-invalid');
+                if (!firstInvalidField) firstInvalidField = input;
+                isValid = false;
+            } else if (isNaN(value) || parseFloat(value) < field.min) {
+                warning.textContent = `Invalid input! ${field.message}`;
+                input.classList.add('is-invalid');
+                if (!firstInvalidField) firstInvalidField = input;
+                isValid = false;
+            }
+        });
+    
+        // Validate Ingredients format
+        let ingredientsInput = document.getElementById('ingredients');
+        let ingredientsWarning = document.getElementById('ingredients-warning');
+        let ingredientsValue = ingredientsInput.value.trim();
+    
+        let validIngredientsPattern = /^(\s*\w+\s*:\s*[^,]+,\s*)*(\s*\w+\s*:\s*[^,]+)$/;
+    
+        if (!ingredientsValue) {
+            ingredientsWarning.textContent = 'Ingredients are required and must be in "name: amount" format.';
+            ingredientsInput.classList.add('is-invalid');
+            if (!firstInvalidField) firstInvalidField = ingredientsInput;
+            isValid = false;
+        } else if (!validIngredientsPattern.test(ingredientsValue)) {
+            ingredientsWarning.textContent = 'Invalid format! Example: "Flour: 2 cups, Sugar: 1/2 cup, Eggs: 2".';
+            ingredientsInput.classList.add('is-invalid');
+            if (!firstInvalidField) firstInvalidField = ingredientsInput;
+            isValid = false;
+        }
+    
+        // Move cursor to the first invalid field
+        if (firstInvalidField) {
+            firstInvalidField.focus();
+        }
+    
+        return isValid;
+    }
+    
+    
+
+    function resetForm() {
+        form.reset();
+        document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+        document.querySelectorAll('.form-control').forEach(el => el.classList.remove('is-invalid'));
+    }
+});
+</script>
+
+{% endblock %}

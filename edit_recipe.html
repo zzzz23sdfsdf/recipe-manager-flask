@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="text-center">Edit Recipe</h1>
+            <p class="lead text-center">Make changes to your recipe</p>
+        </div>
+    </div>
+
+    <!-- Edit Form -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <form id="edit-recipe-form" action="{{ url_for('edit_recipe_post', id=recipe['id']) }}" method="POST" class="bg-white p-4 rounded shadow">
+                <input type="hidden" id="recipe-id" value="{{ recipe['id'] }}">
+                
+                <!-- Group 1: Basic Recipe Information -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h3 class="mb-0">Recipe Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Title -->
+                        <div class="form-group mb-3">
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title" value="{{ recipe['title'] }}" required class="form-control">
+                            <div class="invalid-feedback">Title cannot be empty.</div>
+                        </div>
+
+                        <!-- Image URL -->
+                        <div class="form-group mb-3">
+                            <label for="image_url">Image URL:</label>
+                            <input type="text" id="image_url" name="image_url" value="{{ recipe['image_url'] }}" class="form-control">
+                        </div>
+
+                        <!-- Summary -->
+                        <div class="form-group mb-3">
+                            <label for="summary">Summary:</label>
+                            <textarea id="summary" name="summary" required class="form-control">{{ recipe['summary'] }}</textarea>
+                            <div class="invalid-feedback">Description cannot be empty.</div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Preparation Time - Modified to accept only numbers -->
+                            <div class="col-md-6 mb-3">
+                                <label for="prep_time">Preparation Time (minutes):</label>
+                                <!-- Extract only the numeric part from prep_time -->
+                                <input type="number" id="prep_time" name="prep_time" 
+                                    value="{{ recipe['prep_time']|replace(' minutes', '')|replace('min', '')|trim|int if recipe['prep_time'] is string else recipe['prep_time'] }}" 
+                                    min="1" required class="form-control">
+                                <div class="invalid-feedback">Please enter a valid preparation time in minutes.</div>
+                            </div>
+
+                            <!-- Servings -->
+                            <div class="col-md-6 mb-3">
+                                <label for="servings">Servings:</label>
+                                <input type="number" id="servings" name="servings" value="{{ recipe['servings'] }}" required class="form-control">
+                                <div class="invalid-feedback">Must be a valid number.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group 2: Ingredients and Nutrition -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h3 class="mb-0">Ingredients & Nutrition</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Ingredients -->
+                        <div class="form-group mb-3">
+                            <label for="ingredients">Ingredients (name: amount, separated by commas):</label>
+                            <textarea id="ingredients" name="ingredients" required class="form-control">{% for name, amount in recipe['ingredients'].items() %}{{ name }}: {{ amount }}{% if not loop.last %}, {% endif %}{% endfor %}</textarea>
+                            <div class="invalid-feedback">Ingredients must follow the format: name: amount.</div>
+                        </div>
+
+                        <!-- Allergy Info -->
+                        <div class="form-group mb-3">
+                            <label for="allergy_info">Allergy Info:</label>
+                            <input type="text" id="allergy_info" name="allergy_info" value="{{ recipe['allergy_info'] }}" class="form-control">
+                        </div>
+
+                        <div class="row">
+                            <!-- Calories -->
+                            <div class="col-md-6 mb-3">
+                                <label for="calories">Calories(kcal):</label>
+                                <input type="number" id="calories" name="calories" value="{{ recipe['nutrition']['Calories'] }}" class="form-control">
+                                <div class="invalid-feedback">Must be a valid number.</div>
+                            </div>
+
+                            <!-- Protein -->
+                            <div class="col-md-6 mb-3">
+                                <label for="protein">Protein(g):</label>
+                                <input type="number" id="protein" name="protein" value="{{ recipe['nutrition']['Protein'] }}" class="form-control">
+                                <div class="invalid-feedback">Must be a valid number.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group 3: Steps and Tips -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h3 class="mb-0">Preparation Instructions</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Steps -->
+                        <div class="form-group mb-3">
+                            <label for="Steps">Steps (Each step on a new line):</label>
+                            <textarea id="Steps" name="Steps" class="form-control" rows="5">{% for step in recipe.get("Steps", []) %}{{ step }}{% if not loop.last %}
+{% endif %}{% endfor %}</textarea>
+                        </div>
+
+                        <!-- Cooking Tips -->
+                        <div class="form-group mb-3">
+                            <label for="cooking_tips">Cooking Tips:</label>
+                            <textarea id="cooking_tips" name="cooking_tips" class="form-control">{{ recipe['Cooking Tips'] }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-warning">Save Changes</button>
+                    <button type="button" id="discard-changes" class="btn btn-secondary">Discard Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Confirm Dialog (Not using Bootstrap Modal) -->
+<div id="custom-confirm-dialog" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1050;">
+    <div style="position: relative; width: 400px; margin: 100px auto; background: white; border-radius: 5px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <h5 style="margin-top: 0;">Confirm Discard Changes</h5>
+        <p>Are you sure you want to discard your changes? Any unsaved changes will be lost.</p>
+        <div style="text-align: right; margin-top: 20px;">
+            <button id="keep-editing-btn" class="btn btn-secondary">No, keep editing</button>
+            <button id="discard-confirm-btn" class="btn btn-danger" style="margin-left: 10px;">Yes, discard changes</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const discardBtn = document.getElementById('discard-changes');
+    const confirmDialog = document.getElementById('custom-confirm-dialog');
+    const keepEditingBtn = document.getElementById('keep-editing-btn');
+    const discardConfirmBtn = document.getElementById('discard-confirm-btn');
+    const recipeId = document.getElementById('recipe-id').value;
+    
+    // Show the custom dialog when "Discard Changes" is clicked
+    discardBtn.addEventListener('click', function() {
+        confirmDialog.style.display = 'block';
+        document.body.style.overflow = 'hidden'; 
+    });
+    
+    // Hide the dialog when "No, keep editing" is clicked
+    keepEditingBtn.addEventListener('click', function() {
+        confirmDialog.style.display = 'none';
+        document.body.style.overflow = ''; 
+    });
+    
+    // Navigate away when "Yes, discard changes" is clicked
+    discardConfirmBtn.addEventListener('click', function() {
+        window.location.href = `/view/${recipeId}`;
+    });
+    
+    // Set up form validation
+    const form = document.getElementById('edit-recipe-form');
+    form.addEventListener('submit', function(event) {
+        if (!validateForm()) {
+            event.preventDefault();
+        }
+    });
+});
+
+// Validate form inputs
+function validateForm() {
+    let isValid = true;
+    
+    // Reset previous validation states
+    const formElements = document.getElementById('edit-recipe-form').elements;
+    for (let i = 0; i < formElements.length; i++) {
+        formElements[i].classList.remove('is-invalid');
+    }
+    
+    // Title validation
+    const title = document.getElementById('title');
+    if (!title.value.trim()) {
+        title.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    // Summary validation
+    const summary = document.getElementById('summary');
+    if (!summary.value.trim()) {
+        summary.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    // Preparation time validation
+    const prep_time = document.getElementById('prep_time');
+    if (!prep_time.value.trim()) {
+        prep_time.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    // Servings validation
+    const servings = document.getElementById('servings');
+    if (!servings.value.trim() || isNaN(servings.value) || parseInt(servings.value) <= 0) {
+        servings.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    // Ingredients validation - more permissive approach
+    const ingredients = document.getElementById('ingredients');
+    if (!ingredients.value.trim()) {
+        ingredients.classList.add('is-invalid');
+        isValid = false;
+    } else {
+        // Check for basic format without being too strict
+        let hasInvalidFormat = false;
+        const items = ingredients.value.split(',');
+        
+        for (let item of items) {
+            item = item.trim();
+            // Skip empty items
+            if (!item) continue;
+            
+            
+            if (!item.includes(':')) {
+                hasInvalidFormat = true;
+                break;
+            }
+        }
+        
+        if (hasInvalidFormat) {
+            ingredients.classList.add('is-invalid');
+            isValid = false;
+        }
+    }
+    
+    
+    const calories = document.getElementById('calories');
+    if (calories.value.trim() && (isNaN(calories.value) || parseInt(calories.value) < 0)) {
+        calories.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    const protein = document.getElementById('protein');
+    if (protein.value.trim() && (isNaN(protein.value) || parseInt(protein.value) < 0)) {
+        protein.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    return isValid;
+}
+</script>
+{% endblock %}

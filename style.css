@@ -1,0 +1,515 @@
+/* Define color variables */
+:root {
+    --base-color: black; /* Prominent Green (Base Color) */
+    --accent-color: #FFC107; /* Vibrant Yellow (Accent Color) */
+    --light-grey: #F5F5F5; /* Light Grey */
+    --dark-grey: #333333; /* Dark Grey */
+    --link-color: #2196F3; /* Blue for Links */
+    --link-hover-color: #1976D2; /* Darker Blue for Hover */
+    --navbar-text-color: white; /* Navbar Text Color */
+    --card-shadow: rgba(0, 0, 0, 0.1); /* Card Shadow Color */
+    --success-color: #28a745; /* Success Color */
+    --danger-color: #dc3545; /* Danger/Error Color */
+    --warning-color: #ffc107; /* Warning Color */
+}
+
+/* Global Styles */
+body {
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dark-grey);
+    font-weight: 600;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: var(--base-color) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.navbar a {
+    color: var(--navbar-text-color) !important;
+}
+
+.navbar a:hover {
+    color: var(--accent-color) !important;
+}
+
+.navbar .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Home Page */
+.main-header {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+
+/* Make sure error feedback is visible */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
+.form-control.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Error message styling */
+#error-message {
+    display: none;
+}
+
+#error-message.show {
+    display: block;
+}
+
+
+/* Recipe Card Styling */
+.recipe-card {
+    border-radius: 10px;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--card-shadow);
+}
+
+.recipe-card .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.recipe-card .card-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-grey);
+}
+
+.recipe-card .card-footer {
+    background-color: transparent;
+}
+
+/* Recipe Detail Page */
+.recipe-image-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.recipe-detail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.recipe-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.recipe-summary {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.ingredient-name {
+    font-weight: 600;
+}
+
+.steps-container {
+    background: var(--light-grey);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--card-shadow);
+}
+
+.recipe-image-link img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.btn-outline-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+
+/* Search Results Page */
+.search-query {
+    color: var(--base-color);
+    font-weight: 600;
+}
+
+.highlight {
+    background-color: rgba(255, 193, 7, 0.3);
+    padding: 0 2px;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+.search-result-img {
+    border-radius: 8px;
+    border: 1px solid #eee;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--dark-grey);
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--base-color);
+    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+/* Add to your existing style.css */
+.form-control.is-invalid {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.invalid-feedback {
+    display: none;
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+.alert-danger {
+    border-left: 5px solid var(--danger-color);
+    background-color: #f8d7da;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    border-left: 5px solid var(--success-color);
+    background-color: #d4edda;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.invalid-feedback {
+    display: none;
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+
+.form-text {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--base-color);
+    border-color: var(--base-color);
+}
+
+.btn-primary:hover {
+    background-color: #3d8b40;
+    border-color: #3d8b40;
+}
+
+/* Ensure "View Recipe" button is always blue with white text */
+.btn-outline-primary {
+    background-color: #007bff !important;  /* Blue background */
+    color: white !important;  /* White text */
+    border-color: #007bff !important;  /* Keep border blue */
+}
+
+/* Ensure it does NOT change when clicked */
+.btn-outline-primary:focus, 
+.btn-outline-primary:active, 
+.btn-outline-primary:hover {
+    background-color: #0056b3 !important; /* Darker blue on hover */
+    color: white !important;
+    border-color: #0056b3 !important;
+}
+
+
+.btn-warning {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--dark-grey);
+}
+
+.btn-warning:hover {
+    background-color: #e6ac00;
+    border-color: #e6ac00;
+    color: var(--dark-grey);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Success Messages */
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+/* Footer */
+footer {
+    background: var(--dark-grey);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767.98px) {
+    .recipe-title {
+        font-size: 1.8rem;
+    }
+
+    .card-deck .card {
+        margin-bottom: 20px;
+    }
+    
+    .recipe-image-container {
+        height: 250px;
+    }
+}
+
+/* Add Recipe & Edit Recipe Pages */
+#add-recipe-form, #edit-recipe-form {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    padding: 30px;
+}
+
+#success-message {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Modal Dialogs */
+.modal-content {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: var(--light-grey);
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-footer {
+    background-color: var(--light-grey);
+    border-top: 1px solid #dee2e6;
+}
+
+
+
+/* Home page card images */
+.card-img-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.recipe-image-link:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+/* Search result images */
+.search-result-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Update script.js generated card images */
+#popular-recipes .recipe-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Enhanced allergy information styling */
+
+.allergy-alert {
+    border-left: 5px solid #f0ad4e;
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 12px 20px;
+    margin: 15px auto;
+    max-width: 80%;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.allergy-alert strong {
+    margin-right: 8px;
+}
+
+.allergy-alert i {
+    margin-right: 5px;
+    font-size: 1.2rem;
+}
+
+.allergy-heading {
+    color: #856404;
+    font-weight: bold;
+    position: relative;
+}
+
+.allergy-heading::before {
+    content: "⚠️";
+    margin-right: 5px;
+}
+
+.allergy-info-text {
+    font-weight: 600;
+    color: #856404;
+    padding: 5px 10px;
+    background-color: rgba(255, 243, 205, 0.5);
+    border-radius: 4px;
+    display: inline-block;
+}
+
+@media (max-width: 767.98px) {
+    .allergy-alert {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+}
+
+/* Styling for ingredient links to match other links */
+.ingredient-link {
+    color: var(--link-color);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.ingredient-link:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* Ensure prep time and servings links have consistent styling */
+.card-footer a {
+    text-decoration: underline;
+    color: var(--link-color);
+}
+
+.card-footer a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* Make "Find Similar Recipes" buttons more consistent with other links */
+.btn-outline-primary {
+    border-color: var(--link-color);
+    color: var(--link-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--link-color);
+    border-color: var(--link-color);
+    color: white;
+}
