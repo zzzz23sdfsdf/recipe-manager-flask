@@ -11,14 +11,14 @@ Responsive Design: Works seamlessly across desktop and mobile devices
 JSON Data Storage: Lightweight data persistence using JSON files
 Clean UI: Modern interface with intuitive navigation
 
-## Technologies Used
+# Technologies Used
 
 - **Backend**: Python, Flask
 - **Frontend**: HTML, CSS, JavaScript
 - **Data Storage**: JSON
 - **Dependencies**: flask, uuid, json
 
-## Project Structure
+# Project Structure
 recipe-manager/
 
 server.py - Main Flask application
@@ -38,8 +38,7 @@ index.html - Homepage
 search_results.html - Search results page
 view.html - Recipe details view
 
-## Installation & Setup
-
+# Installation & Setup
 
 ## Install dependencies:
 Copypip install -r requirements.txt
@@ -51,19 +50,19 @@ Copypython server.py
 Copyhttp://localhost:5000
 
 
-## Usage
-# Adding a Recipe
+# Usage
+## Adding a Recipe
 
 Click the "Add Recipe" button on the homepage
 Fill in the recipe details including title, ingredients, instructions, and category
 Click "Save" to add the recipe to your collection
 
-# Searching for Recipes
+## Searching for Recipes
 
 Enter a search term in the search bar
 Results will display recipes matching the name, ingredients, or category
 
-# Editing a Recipe
+## Editing a Recipe
 
 Navigate to the recipe you want to edit
 Click the "Edit" button
