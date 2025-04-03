@@ -11,14 +11,14 @@ Responsive Design: Works seamlessly across desktop and mobile devices
 JSON Data Storage: Lightweight data persistence using JSON files
 Clean UI: Modern interface with intuitive navigation
 
-Technologies Used
+## Technologies Used
 
-Backend: Python, Flask
-Frontend: HTML, CSS, JavaScript
-Data Storage: JSON
-Dependencies: flask, uuid, json
+- **Backend**: Python, Flask
+- **Frontend**: HTML, CSS, JavaScript
+- **Data Storage**: JSON
+- **Dependencies**: flask, uuid, json
 
-Project Structure
+## Project Structure
 Copyrecipe-manager/
 ├── server.py              # Main Flask application
 ├── static/                # Static files
