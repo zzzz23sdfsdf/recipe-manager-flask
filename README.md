@@ -32,6 +32,7 @@ Copyrecipe-manager/
     ├── index.html         # Homepage
     ├── search_results.html# Search results page
     └── view.html          # Recipe details view
+    
 Installation & Setup
 
 Clone the repository:
