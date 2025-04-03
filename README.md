@@ -19,19 +19,19 @@ Clean UI: Modern interface with intuitive navigation
 - **Dependencies**: flask, uuid, json
 
 ## Project Structure
-Copyrecipe-manager/
+recipe-manager/
 ├── server.py              # Main Flask application
 ├── static/                # Static files
 │   ├── recipes.json       # Recipe data storage
 │   ├── script.js          # Frontend JavaScript
 │   └── style.css          # CSS styling
 └── templates/             # HTML templates
-    ├── add_recipe.html    # Add new recipe form
-    ├── base.html          # Base template layout
-    ├── edit_recipe.html   # Edit recipe form
-    ├── index.html         # Homepage
-    ├── search_results.html# Search results page
-    └── view.html          # Recipe details view
+├── add_recipe.html    # Add new recipe form
+├── base.html          # Base template layout
+├── edit_recipe.html   # Edit recipe form
+├── index.html         # Homepage
+├── search_results.html# Search results page
+└── view.html          # Recipe details view
     
 Installation & Setup
 
